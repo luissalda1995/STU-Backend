@@ -5,6 +5,11 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+var passportConfig = require('./config/passport');
+var expressSession = require('express-session');
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
@@ -21,6 +26,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(expressSession({secret: 'mySecretKey',
+                       resave: true,
+                       saveUninitialized: true}));
+app.use(passport.initialize()); // Add passport initialization
+app.use(passport.session());    // Add passport initialization
+passportConfig(passport);
 
 app.use('/', routes);
 app.use('/users', users);

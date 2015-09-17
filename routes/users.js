@@ -1,9 +1,22 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+module.exports = function(passport){
+    // route to log in
+    router.post('/login', passport.authenticate('local'), function(req, res) {
+      res.send(req.user);
+    });
 
-module.exports = router;
+    router.get('/loggedin', function(req, res) {
+      res.send(req.isAuthenticated() ? req.user : '0');
+    });
+
+	    // route to log out
+	router.post('/logout', function(req, res){
+	  req.logOut();
+	  res.send(200);
+	});
+    
+    return router;
+
+}
