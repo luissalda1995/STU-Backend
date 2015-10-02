@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var pg = require('pg');
 var path = require('path');
-var connectionString = require(path.join(__dirname, '../', '../', 'config'));
+var Carrera = require('../models/user').Carrera;
 
 router.get('/api/v1/carreras/', function(req, res) {
 

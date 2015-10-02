@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var pg = require('pg');
 var path = require('path');
-var connectionString = require(path.join(__dirname, '../', '../', 'config'));
+var Examen = require('../models/user').Examen;
 
 router.get('/api/v1/examenes/:profesor_id', function(req, res) {
 

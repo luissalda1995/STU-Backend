@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var pg = require('pg');
 var path = require('path');
-var connectionString = require(path.join(__dirname, '../', '../', 'config'));
+var Materia = require('../models/user').Materia;
 
 router.get('/api/v1/materias/:carrera_id', function(req, res) {
 

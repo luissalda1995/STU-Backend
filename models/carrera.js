@@ -11,8 +11,8 @@ var knex = require('knex')({
 
 var bookshelf = require('bookshelf')(knex);
 
-var User = bookshelf.Model.extend({
+var Carrera = bookshelf.Model.extend({
   tableName: 'tgen_usuarios'
 });
 
-module.exports.User = User;
+module.exports.Carrera = Carrera;
