@@ -1,5 +1,8 @@
 var express = require('express');
 var router = express.Router();
+var pg = require('pg');
+var path = require('path');
+var connectionString = require(path.join(__dirname, '../', '../', 'config'));
 
 module.exports = function(passport){
     // route to log in
@@ -11,11 +14,11 @@ module.exports = function(passport){
       res.send(req.isAuthenticated() ? req.user : '0');
     });
 
-	    // route to log out
-	router.post('/logout', function(req, res){
-	  req.logOut();
-	  res.send(200);
-	});
+    // route to log out
+  	router.post('/logout', function(req, res){
+  	  req.logOut();
+  	  res.send(200);
+  	});
     
     return router;
 

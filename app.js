@@ -12,6 +12,10 @@ var expressSession = require('express-session');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var carreras = require('./routes/carreras');
+var materias = require('./routes/materias');
+var profesores = require('./routes/profesores');
+var examenes = require('./routes/examenes');
 
 var app = express();
 
@@ -35,7 +39,11 @@ app.use(passport.session());    // Add passport initialization
 passportConfig(passport);
 
 app.use('/', routes);
-app.use('/users', users);
+app.use('/', users);
+app.use('/', carreras);
+app.use('/', materias);
+app.use('/', profesores);
+app.use('/', examenes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
